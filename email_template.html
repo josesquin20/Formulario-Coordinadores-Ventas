@@ -3,88 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Respuesta del Formulario</title>
+    <title>Respuestas del Formulario de Genealogía</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background: linear-gradient(135deg, #797676, #333); /* Degradado de gris oscuro */
+            color: #f4f4f4;
             margin: 0;
-            padding: 0;
+            padding: 20px;
         }
         .container {
-            width: 100%;
             max-width: 600px;
             margin: 0 auto;
-            background-color: #ffffff;
+            background-color: #333;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        .header {
+        h1 {
+            color: #007aff;
             text-align: center;
-            padding: 10px 0;
-            border-bottom: 1px solid #dddddd;
         }
-        .header img {
-            max-width: 150px;
+        p {
+            line-height: 1.6;
         }
-        .content {
-            padding: 20px;
-        }
-        .content h1 {
-            font-size: 24px;
-            color: #333333;
-        }
-        .content p {
-            font-size: 16px;
-            color: #666666;
-            line-height: 1.5;
-        }
-        .content .field {
+        .field {
             margin-bottom: 15px;
         }
-        .content .field label {
+        .field label {
             font-weight: bold;
-            color: #333333;
-        }
-        .content .field span {
             display: block;
-            margin-top: 5px;
-            color: #666666;
+            margin-bottom: 5px;
         }
-        .footer {
-            text-align: center;
-            padding: 10px 0;
-            border-top: 1px solid #dddddd;
-            font-size: 14px;
-            color: #999999;
+        .field p {
+            margin: 0;
+        }
+        .logo {
+            display: block;
+            margin: 0 auto 20px;
+            max-width: 60%;
+            height: auto;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <img src="https://sefaruniversal.com/wp-content/uploads/2021/01/Logo-de-Sefar-Universal-nuevo-rediseno-pagina-web-Abogados-y-Genealogistas-letras-blancas.png" alt="Logo">
+        <img src="https://sefaruniversal.com/wp-content/uploads/2021/01/Logo-de-Sefar-Universal-nuevo-rediseno-pagina-web-Abogados-y-Genealogistas-letras-blancas.png" alt="Logo" class="logo">
+        <h1>Respuestas del Formulario de Genealogía</h1>
+        <!-- Campos del formulario -->
+        <div class="field">
+            <label>Correo Electrónico:</label>
+            <p>{{email}}</p>
         </div>
-        <div class="content">
-            <h1>Respuesta del Formulario</h1>
-            <div class="field">
-                <label>Correo Electrónico:</label>
-                <span>{{email}}</span>
-            </div>
-            <div class="field">
-                <label>Nombre:</label>
-                <span>{{nombre}}</span>
-            </div>
-            <div class="field">
-                <label>Apellido:</label>
-                <span>{{apellido}}</span>
-            </div>
-            <!-- Agregar más campos según sea necesario -->
+        <div class="field">
+            <label>Nombre:</label>
+            <p>{{nombre}}</p>
         </div>
-        <div class="footer">
-            <p>Gracias por tu respuesta. Hemos recibido tu formulario.</p>
+        <div class="field">
+            <label>Apellido:</label>
+            <p>{{apellido}}</p>
         </div>
+        <!-- Repite para cada campo del formulario -->
+        {{#each campos}}
+        <div class="field">
+            <label>Título:</label>
+            <p>{{this.titulo}}</p>
+        </div>
+        <div class="field">
+            <label>Comentarios:</label>
+            <p>{{this.comentarios}}</p>
+        </div>
+        <div class="field">
+            <label>Prioridad:</label>
+            <p>{{this.prioridad}}</p>
+        </div>
+        {{/each}}
     </div>
 </body>
 </html>
