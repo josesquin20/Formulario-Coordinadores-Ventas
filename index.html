@@ -369,7 +369,7 @@
     <div class="form-container">
         <img src="https://sefaruniversal.com/wp-content/uploads/2021/01/Logo-de-Sefar-Universal-nuevo-rediseno-pagina-web-Abogados-y-Genealogistas-letras-blancas.png" alt="Logo" class="logo">
         <h1>Formulario Ventas y Coordinadores</h1>
-        <form id="formulario" onsubmit="mostrarCarga(); submitted=true; actualizarAsunto();" action="https://formsubmit.co/sistemascol@sefarvzla.com" method="POST" target="hidden_iframe">
+        <form id="formulario" onsubmit="mostrarCarga(); submitted=true;" action="https://formsubmit.co/sistemascol@sefarvzla.com" method="POST" target="hidden_iframe">
             <div class="form-field">
                 <label for="email" class="required">Correo Electrónico:</label>
                 <input type="email" id="email" name="email" required>
@@ -388,7 +388,7 @@
                 <h2 style="text-align: center;">¿Cuáles son los 10 deseos principales para mejorar la situación actual de la empresa?</h2>
                 <div class="form-field" id="campo-1">
                     <label for="deseos-1" class="required">Deseo 1:</label>
-                    <textarea id="deseos-1" name="deseos[1]" rows="4" maxlength="2000" required></textarea>
+                    <textarea id="deseos-1" name="deseos[]" rows="4" maxlength="2000" required></textarea>
                     <div class="removeFieldButtonContainer" style="display: none;">
                         <button type="button" class="removeFieldButton" onclick="eliminarCampo(this)">X</button>
                     </div>
@@ -399,7 +399,7 @@
                 <div id="campos-problemas">
                     <div class="form-field" id="problema-1">
                         <label for="problemas-1" class="required">Problema 1:</label>
-                        <textarea id="problemas-1" name="problemas[1]" rows="4" maxlength="2000" required></textarea>
+                        <textarea id="problemas-1" name="problemas[]" rows="4" maxlength="2000" required></textarea>
                         <!-- Botón de eliminar campos en los problemas -->
                         <div class="removeFieldButtonContainer" style="display: none;">
                             <button type="button" class="removeFieldButton" onclick="eliminarCampoProblema(this)">X</button>
@@ -412,12 +412,12 @@
                 <div id="campos-planes">
                     <div class="form-field" id="plan-1">
                         <label for="planes-1" class="required">Plan de acción 1:</label>
-                        <textarea id="planes-1" name="planes[1]" rows="4" maxlength="2000" required></textarea>
+                        <textarea id="planes-1" name="planes[]" rows="4" maxlength="2000" required></textarea>
                         <div class="removeFieldButtonContainer planes" style="display: none;">
                             <button type="button" class="removeFieldButton" onclick="eliminarCampoPlan(this)">X</button>
                         </div>
                         <label for="tiempo-1" class="required">Tiempo estimado:</label>
-                        <select id="tiempo-1" name="tiempo[1]" required>
+                        <select id="tiempo-1" name="tiempo[]" required>
                             <option value="" disabled selected>Seleccione un tiempo</option>
                             <option value="1 semana">1 semana</option>
                             <option value="1 mes">1 mes</option>
@@ -431,14 +431,13 @@
             </div>
             <!-- <input type="hidden" name="_cc" value="otrocorreo@ejemplo.com"> -->
             <!-- <input type="hidden" name="_replyto" value="sistemascol@sefarvzla.com"> -->
-            <input type="hidden" id="subject" name="_subject" value="">
+            <input type="hidden" name="_subject" value="Nueva respuesta del formulario de Ventas y Coordinadores">
+            <input type="hidden" name="_template" value="https://josesquin20.github.io/Email_Template_Form_Coordinadores/email_template.html">
             <input type="hidden" name="_honey" value="">
             <input type="hidden" name="_autoresponse" value="Gracias por tu respuesta. Hemos recibido tu formulario.">
             <input type="hidden" name="_next" value="https://tu-sitio-web.com/gracias">
             <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_cc" value="sistemascol@sefarvzla.com">
-            <input type="hidden" name="_format" value="html">
-            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_cc" value="sinergiaquimicos@gmail.com">
             <p class="info-text">Gracias por participar en nuestra reunión de coordinadores. Este formulario tiene como objetivo recopilar tus opiniones, sugerencias y comentarios para mejorar futuras reuniones.</p>
             <p class="info-text">Por favor, llena cada sección con tus aportes sinceros. Tus comentarios son fundamentales para identificar áreas de mejora y asegurar que nuestras reuniones sean productivas y efectivas.</p>
             <button type="submit">Enviar</button>
@@ -561,7 +560,7 @@
                 etiquetaDeseo.setAttribute('for', `deseos-${nuevoId}`);
                 etiquetaDeseo.innerText = `Deseo ${nuevoId}:`;
                 deseo.id = `deseos-${nuevoId}`;
-                deseo.name = `deseos[${nuevoId}]`;
+                deseo.name = 'deseos[]';
             });
         }
 
@@ -576,7 +575,7 @@
                 etiquetaProblema.setAttribute('for', `problemas-${nuevoId}`);
                 etiquetaProblema.innerText = `Problema ${nuevoId}:`;
                 problema.id = `problemas-${nuevoId}`;
-                problema.name = `problemas[${nuevoId}]`;
+                problema.name = 'problemas[]';
             });
         }
 
@@ -593,11 +592,11 @@
                 etiquetaPlan.setAttribute('for', `planes-${nuevoId}`);
                 etiquetaPlan.innerText = `Plan de acción ${nuevoId}:`;
                 plan.id = `planes-${nuevoId}`;
-                plan.name = `planes[${nuevoId}]`;
+                plan.name = 'planes[]';
 
                 etiquetaTiempo.setAttribute('for', `tiempo-${nuevoId}`);
                 tiempo.id = `tiempo-${nuevoId}`;
-                tiempo.name = `tiempo[${nuevoId}]`;
+                tiempo.name = 'tiempo[]';
             });
         }
 
@@ -623,7 +622,7 @@
 
             var deseo = document.createElement('textarea');
             deseo.id = `deseos-${nuevoId}`;
-            deseo.name = `deseos[${nuevoId}]`;
+            deseo.name = 'deseos[]';
             deseo.rows = 4;
             deseo.maxLength = 2000;
             deseo.required = true;
@@ -673,7 +672,7 @@
 
             var problema = document.createElement('textarea');
             problema.id = `problemas-${nuevoId}`;
-            problema.name = `problemas[${nuevoId}]`;
+            problema.name = 'problemas[]';
             problema.rows = 4;
             problema.maxLength = 2000;
             problema.required = true;
@@ -723,7 +722,7 @@
 
             var plan = document.createElement('textarea');
             plan.id = `planes-${nuevoId}`;
-            plan.name = `planes[${nuevoId}]`;
+            plan.name = 'planes[]';
             plan.rows = 4;
             plan.maxLength = 2000;
             plan.required = true;
@@ -735,7 +734,7 @@
 
             var tiempo = document.createElement('select');
             tiempo.id = `tiempo-${nuevoId}`;
-            tiempo.name = `tiempo[${nuevoId}]`;
+            tiempo.name = 'tiempo[]';
             tiempo.required = true;
             tiempo.innerHTML = `
                 <option value="" disabled selected>Seleccione un tiempo</option>
@@ -753,7 +752,7 @@
 
             var tiempo = document.createElement('select');
             tiempo.id = `tiempo-${nuevoId}`;
-            tiempo.name = `tiempo[${nuevoId}]`;
+            tiempo.name = 'tiempo[]';
             tiempo.required = true;
             tiempo.innerHTML = `
                 <option value="" disabled selected>Seleccione un tiempo</option>
@@ -922,13 +921,6 @@
             actualizarBotonesEliminar();
             actualizarBotonesEliminarProblemas();
             actualizarBotonesEliminarPlanes();
-        }
-
-        function actualizarAsunto() {
-            var nombre = document.getElementById('nombre').value;
-            var apellido = document.getElementById('apellido').value;
-            var subject = `Se ha enviado una respuesta del formulario por parte de ${nombre} ${apellido}`;
-            document.getElementById('subject').value = subject;
         }
     </script>
 </body>
