@@ -384,14 +384,6 @@
                     <input type="text" id="apellido" name="apellido" required>
                 </div>
             </div>
-            <div class="form-field">
-                <label for="genero" class="required">Género:</label>
-                <select id="genero" name="genero" required>
-                    <option value="" disabled selected>Seleccione su género</option>
-                    <option value="Sr.">Hombre</option>
-                    <option value="Sra.">Mujer</option>
-                </select>
-            </div>
             <div id="campos">
                 <h2 style="text-align: center;">¿Cuáles son los 10 deseos principales para mejorar la situación actual de la empresa?</h2>
                 <div class="form-field" id="campo-1">
@@ -935,22 +927,8 @@
         function actualizarAsunto() {
             var nombre = document.getElementById('nombre').value;
             var apellido = document.getElementById('apellido').value;
-            var genero = determinarGenero(nombre);
-            var subject = `Se ha enviado una respuesta del formulario por parte del ${genero} ${nombre} ${apellido}`;
+            var subject = `Se ha enviado una respuesta del formulario por parte de ${nombre} ${apellido}`;
             document.getElementById('subject').value = subject;
-        }
-
-        function determinarGenero(nombre) {
-            var nombresMasculinos = ["Juan", "Pedro", "Carlos", "Luis", "José"];
-            var nombresFemeninos = ["María", "Ana", "Laura", "Carmen", "Lucía"];
-            
-            if (nombresMasculinos.includes(nombre)) {
-                return "Sr.";
-            } else if (nombresFemeninos.includes(nombre)) {
-                return "Sra.";
-            } else {
-                return "Sr./Sra.";
-            }
         }
     </script>
 </body>
