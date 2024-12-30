@@ -369,7 +369,7 @@
     <div class="form-container">
         <img src="https://sefaruniversal.com/wp-content/uploads/2021/01/Logo-de-Sefar-Universal-nuevo-rediseno-pagina-web-Abogados-y-Genealogistas-letras-blancas.png" alt="Logo" class="logo">
         <h1>Formulario Ventas y Coordinadores</h1>
-        <form id="formulario" onsubmit="mostrarCarga(); submitted=true;" action="https://formsubmit.co/sistemascol@sefarvzla.com" method="POST" target="hidden_iframe">
+        <form id="formulario" onsubmit="mostrarCarga(); submitted=true; actualizarAsunto();" action="https://formsubmit.co/sistemascol@sefarvzla.com" method="POST" target="hidden_iframe">
             <div class="form-field">
                 <label for="email" class="required">Correo Electrónico:</label>
                 <input type="email" id="email" name="email" required>
@@ -431,7 +431,7 @@
             </div>
             <!-- <input type="hidden" name="_cc" value="otrocorreo@ejemplo.com"> -->
             <!-- <input type="hidden" name="_replyto" value="sistemascol@sefarvzla.com"> -->
-            <input type="hidden" name="_subject" value="Nueva respuesta del formulario de Ventas y Coordinadores">
+            <input type="hidden" name="_subject" id="subject" value="">
             <input type="hidden" name="_template" value="https://josesquin20.github.io/Email_Template_Form_Coordinadores/email_template.html">
             <input type="hidden" name="_honey" value="">
             <input type="hidden" name="_autoresponse" value="Gracias por tu respuesta. Hemos recibido tu formulario.">
@@ -900,6 +900,14 @@
             if (selectedOption) {
                 selectElement.className = selectedOption.className;
             }
+        }
+
+        function actualizarAsunto() {
+            var nombre = document.getElementById('nombre').value;
+            var apellido = document.getElementById('apellido').value;
+            var uniqueId = Date.now(); // Genera un ID único basado en la marca de tiempo actual
+            var subjectField = document.getElementById('subject');
+            subjectField.value = `Nueva respuesta de ${nombre} ${apellido} - ID: ${uniqueId}`;
         }
 
         // Cargar el tema preferido al cargar la página
